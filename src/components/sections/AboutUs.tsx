@@ -26,22 +26,22 @@ export default function AboutUs() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="rounded-3xl p-8 flex flex-col justify-between bg-[#c7f043] overflow-hidden relative aspect-square md:aspect-auto md:min-h-[260px]"
+            className="rounded-3xl p-8 flex flex-col justify-between bg-gradient-to-br from-[#f06a23] via-[#f77f3e] to-[#ff9959] overflow-hidden relative aspect-square md:aspect-auto md:min-h-[260px] text-white"
           >
             <div className="z-10">
-              <h3 className="text-5xl font-bold text-gray-900 mb-2">500M+</h3>
-              <p className="text-gray-900 font-medium text-lg">Content Views Generated</p>
+              <h3 className="text-5xl font-bold text-white mb-2">500M+</h3>
+              <p className="text-white/90 font-medium text-lg">Content Views Generated</p>
             </div>
             
             <div className="flex flex-wrap gap-2 z-10 mt-8">
               {['Global Exposure', 'Brand Visibility', 'High Engagement', 'Social Growth', 'Digital Reach'].map((tag, i) => (
-                <span key={i} className="px-3 py-1 bg-white/80 backdrop-blur-sm rounded-full text-xs font-semibold text-gray-800">
+                <span key={i} className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold text-white border border-white/10">
                   {tag}
                 </span>
               ))}
             </div>
             {/* Background wave effect approximation */}
-            <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-[#b2de34] rounded-full blur-3xl opacity-50 pointer-events-none" />
+            <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-white rounded-full blur-3xl opacity-10 pointer-events-none" />
           </motion.div>
 
           {/* Tile 2: Video Placeholder */}

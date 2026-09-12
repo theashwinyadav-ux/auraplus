@@ -90,8 +90,8 @@ export default function Services() {
               </div>
 
               {/* Right Side: Image Placeholder */}
-              <div className="w-full md:w-1/2 aspect-video md:aspect-[4/3] bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl relative overflow-hidden flex items-center justify-center border border-gray-100">
-                <p className="text-gray-400 font-medium text-sm">Image Placeholder</p>
+              <div className="w-full md:w-1/2 aspect-video md:aspect-[4/3] bg-gradient-to-br from-[#f06a23] via-[#f77f3e] to-[#ff9959] rounded-2xl relative overflow-hidden flex items-center justify-center border border-gray-100">
+                <p className="text-white/80 font-medium text-sm">Image Placeholder</p>
               </div>
             </motion.div>
           ))}

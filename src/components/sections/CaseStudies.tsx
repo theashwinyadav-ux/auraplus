@@ -1,57 +1,94 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-const caseStudies = [
-  { id: "lumis", title: "Lumis Skincare", description: "Built Lumis Skincare into a trusted wellness brand through creator education, testimonials, and paid media.", metrics: ["1.8M+", "96M", "52K"] },
-  { id: "vela", title: "Atelier Vela", description: "Transformed WanderTwo's travel content into a recognizable brand with stronger storytelling.", metrics: ["2.4M+", "318M", "18K"] },
-  { id: "fitpulse", title: "FitPulse", description: "Relaunched FitPulse with a community-first campaign that improved acquisition and onboarding.", metrics: ["860K+", "12M+", "31K"] },
-  { id: "hearth", title: "Hearth & Grain", description: "Moved Hearth & Grain from word-of-mouth discovery to digital demand through storytelling.", metrics: ["540K+", "4.6M", "22K"] }
+const workCategories = [
+  { 
+    id: "graphic-designs", 
+    title: "Graphic Designs", 
+    description: "Striking visual identities, pitch decks, and social statics.", 
+    tags: ["Logos", "Carousels", "Ads"], 
+    bgClass: "bg-[#c7f043] text-gray-900", 
+    tagClass: "bg-white/80 text-gray-800 border-none"
+  },
+  { 
+    id: "video-edits", 
+    title: "Video Edits", 
+    description: "High-retention short-form and professional long-form content.", 
+    tags: ["Reels", "TikToks", "YouTube"], 
+    bgClass: "bg-gray-100 text-gray-900", 
+    tagClass: "bg-white text-gray-800 border-gray-200"
+  },
+  { 
+    id: "page-growth", 
+    title: "Page Growth", 
+    description: "Scaling communities organically and through paid media.", 
+    tags: ["Followers", "Engagement", "Community"], 
+    bgClass: "bg-gradient-to-br from-[#f06a23] via-[#f77f3e] to-[#ff9959] text-white", 
+    tagClass: "bg-white/20 text-white border-white/10"
+  },
+  { 
+    id: "content-distribution", 
+    title: "Content Distribution", 
+    description: "Maximizing the reach of your best content across platforms.", 
+    tags: ["Syndication", "Clipping", "Omnichannel"], 
+    bgClass: "bg-gray-900 text-white", 
+    tagClass: "bg-white/10 text-gray-300 border-white/10"
+  }
 ];
 
 export default function CaseStudies() {
   return (
-    <section id="work" className="py-24 px-6 relative bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col items-center text-center mb-16">
-          <div className="px-4 py-1.5 border border-gray-200 rounded-full text-sm font-medium text-gray-700 mb-6 bg-white">
-            Featured Work
+    <section id="work" className="py-24 px-6 relative bg-white border-b border-gray-200">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
+          <div className="flex flex-col items-start text-left">
+            <div className="px-4 py-1.5 border border-gray-200 rounded-full text-sm font-medium text-gray-700 mb-6 bg-white">
+              Featured Work
+            </div>
+            <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight leading-snug">
+              Discover How We Help<br className="hidden sm:block" /> Brands Scale
+            </h2>
           </div>
-          <h2 className="text-3xl md:text-4xl font-semibold text-gray-900 tracking-tight leading-snug">
-            Discover How We Help<br className="hidden sm:block" /> Brands Scale
-          </h2>
+          <button className="px-5 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-br from-[#f06a23] via-[#f77f3e] to-[#ff9959] hover:opacity-90 transition-opacity shadow-sm">
+            View Full Portfolio
+          </button>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {caseStudies.map((study, i) => (
-            <motion.div 
-              key={study.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="group cursor-pointer rounded-3xl overflow-hidden bg-white border border-gray-200 hover:border-gray-300 transition-colors shadow-sm hover:shadow-md"
-            >
-              <div className="aspect-[4/3] bg-gray-100 relative overflow-hidden">
-                 {/* Placeholder for images/videos */}
-                 <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent z-10" />
-                 <div className="absolute inset-0 flex items-center justify-center text-gray-900/20 text-4xl font-bold">
-                    {study.title}
-                 </div>
-              </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-3 text-gray-900 group-hover:text-brand-primary transition-colors">{study.title}</h3>
-                <p className="text-gray-600 mb-6">{study.description}</p>
-                <div className="flex items-center gap-6 border-t border-gray-100 pt-6">
-                  {study.metrics.map((m, j) => (
-                    <div key={j} className="flex-1">
-                      <div className="text-xl font-bold text-gray-900 mb-1">{m}</div>
-                      <div className="text-xs text-gray-500 uppercase tracking-wider">Metric {j+1}</div>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {workCategories.map((category, i) => (
+            <Link href={`/work/${category.id}`} key={category.id}>
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: i * 0.1 }}
+                className={`group cursor-pointer rounded-3xl p-8 md:p-12 flex flex-col justify-between overflow-hidden relative aspect-square md:aspect-auto md:min-h-[380px] hover:-translate-y-1 transition-transform duration-300 ${category.bgClass}`}
+              >
+                <div className="z-10 flex justify-between items-start">
+                  <div>
+                    <h3 className="text-4xl font-bold mb-3">{category.title}</h3>
+                    <p className="font-medium text-lg opacity-90 max-w-sm">{category.description}</p>
+                  </div>
+                  <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-2 z-10 mt-12">
+                  {category.tags.map((tag, j) => (
+                    <span key={j} className={`px-4 py-1.5 backdrop-blur-md rounded-full text-sm font-semibold border ${category.tagClass}`}>
+                      {tag}
+                    </span>
                   ))}
                 </div>
-              </div>
-            </motion.div>
+                
+                {/* Subtle hover effect background */}
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
