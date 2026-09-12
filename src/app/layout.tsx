@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Aura Plus - Social Media Agency",
+  title: "Aura Plus - Just Another Social Media Agency But With Twist",
   description: "Aura Plus is a social media agency building memorable brands through strategy, content, and creative growth.",
 };
 
