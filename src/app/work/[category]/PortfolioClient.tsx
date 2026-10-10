@@ -12,8 +12,17 @@ const pitchDecks = [
   {
     id: 1,
     title: "Google Business Profile Service",
-    pdfUrl: "/images/pitch-decks/Google Business Profile Service.pdf",
-    pages: []
+    pdfUrl: "",
+    pages: [
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 1.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 2.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 3.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 4.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 5.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 6.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 7.jpg",
+      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 8.jpg",
+    ]
   },
   {
     id: 2,
