@@ -42,10 +42,10 @@ export default function Header() {
         <nav className={`hidden md:flex items-center gap-8 text-sm font-medium transition-colors duration-300 ${
           isScrolled ? "text-gray-600" : "text-white/90"
         }`}>
-          <Link href="/#about" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>About</Link>
-          <Link href="/#services" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Services</Link>
-          <Link href="/#work" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Work</Link>
-          <Link href="/#contact" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Contact</Link>
+          <Link href="/About-Us" className={`transition-colors ${isScrolled ? "hover:text-[#f06a23]" : "hover:text-white"}`}>About</Link>
+          <Link href="/Services" className={`transition-colors ${isScrolled ? "hover:text-[#f06a23]" : "hover:text-white"}`}>Services</Link>
+          <Link href="/Our-Work" className={`transition-colors ${isScrolled ? "hover:text-[#f06a23]" : "hover:text-white"}`}>Work</Link>
+          <Link href="/Contact" className={`transition-colors ${isScrolled ? "hover:text-[#f06a23]" : "hover:text-white"}`}>Contact</Link>
         </nav>
 
         <div className="flex items-center gap-4">
