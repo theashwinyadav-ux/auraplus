@@ -12,9 +12,7 @@ export default function Footer() {
         </Link>
         
         <div className="flex items-center gap-6 text-sm text-gray-600">
-          <Link href="#" className="hover:text-brand-primary transition-colors">Twitter</Link>
-          <Link href="#" className="hover:text-brand-primary transition-colors">LinkedIn</Link>
-          <Link href="#" className="hover:text-brand-primary transition-colors">YouTube</Link>
+          {/* Social links or other footer elements can go here */}
         </div>
 
         <div className="text-sm text-gray-500">

@@ -22,9 +22,9 @@ export default function Contact() {
           </div>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-white text-[#f06a23] font-semibold rounded-lg hover:bg-gray-50 transition-colors shadow-md">
-              Get in touch
-            </button>
+            <a href="#book" className="w-full sm:w-auto px-8 py-4 bg-white text-[#f06a23] font-semibold rounded-lg hover:bg-gray-50 transition-colors shadow-md text-center inline-block">
+              Book a Call
+            </a>
             <a href="mailto:hello@auraplus.com" className="w-full sm:w-auto px-8 py-4 bg-white/20 backdrop-blur-md text-white font-semibold rounded-lg hover:bg-white/30 transition-colors border border-white/10">
               hello@auraplus.com
             </a>

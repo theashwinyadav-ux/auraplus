@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -26,9 +27,9 @@ export default function Hero() {
             Through strategy, content, and creative growth, we help you connect with your audience in meaningful ways.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto px-8 py-4 bg-white text-[#f06a23] font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl">
+            <Link href="/#work" className="w-full sm:w-auto px-8 py-4 bg-white text-[#f06a23] font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl block">
               View Our Work
-            </button>
+            </Link>
             <button className="w-full sm:w-auto px-8 py-4 bg-white/20 border border-white/20 backdrop-blur-md text-white font-semibold rounded-lg hover:bg-white/30 transition-all">
               Our Services
             </button>

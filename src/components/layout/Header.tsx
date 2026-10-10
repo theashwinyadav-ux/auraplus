@@ -43,20 +43,19 @@ export default function Header() {
           isScrolled ? "text-gray-600" : "text-white/90"
         }`}>
           <Link href="/#about" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>About</Link>
-          <Link href="/#why-choose-us" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Why Us?</Link>
           <Link href="/#services" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Services</Link>
           <Link href="/#work" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Work</Link>
           <Link href="/#contact" className={`transition-colors ${isScrolled ? "hover:text-brand-primary" : "hover:text-white"}`}>Contact</Link>
         </nav>
 
         <div className="flex items-center gap-4">
-          <button className={`hidden md:block px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors shadow-sm ${
+          <a href="#book" className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors shadow-sm ${
             isScrolled 
-              ? "bg-gray-900 text-white hover:bg-brand-primary" 
+              ? "bg-gray-900 text-white hover:bg-[#f06a23]" 
               : "bg-white text-[#f06a23] hover:bg-gray-50"
           }`}>
-            Book a call
-          </button>
+            Book a Call
+          </a>
         </div>
       </div>
     </motion.header>

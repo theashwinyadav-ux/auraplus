@@ -18,104 +18,60 @@ export default function AboutUs() {
           </h2>
         </div>
 
-        {/* 3x2 Grid Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* 3x1 Grid Section */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
-          {/* Tile 1: Stat (Green) */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="rounded-3xl p-8 flex flex-col justify-between bg-gradient-to-br from-[#f06a23] via-[#f77f3e] to-[#ff9959] overflow-hidden relative aspect-square md:aspect-auto md:min-h-[260px] text-white"
+            viewport={{ once: true, margin: "-50px" }}
+            className="rounded-3xl p-8 flex flex-col transition-all group relative overflow-hidden bg-gradient-to-br from-[#f06a23] via-[#f77f3e] to-[#ff9959] text-white hover:shadow-lg border-none md:min-h-[260px]"
           >
-            <div className="z-10">
-              <h3 className="text-5xl font-bold text-white mb-2">500M+</h3>
-              <p className="text-white/90 font-medium text-lg">Content Views Generated</p>
+            <div className="z-10 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight">500M+</h3>
+                <p className="text-white/90 text-sm leading-relaxed">Content Views Generated</p>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 z-10 mt-8">
+                {['Global Exposure', 'Brand Visibility', 'High Engagement', 'Social Growth'].map((tag, i) => (
+                  <span key={i} className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-semibold text-white border border-white/10">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-            
-            <div className="flex flex-wrap gap-2 z-10 mt-8">
-              {['Global Exposure', 'Brand Visibility', 'High Engagement', 'Social Growth', 'Digital Reach'].map((tag, i) => (
-                <span key={i} className="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-xs font-semibold text-white border border-white/10">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            {/* Background wave effect approximation */}
-            <div className="absolute -bottom-20 -right-20 w-96 h-96 bg-white rounded-full blur-3xl opacity-10 pointer-events-none" />
           </motion.div>
 
-          {/* Tile 2: Video Placeholder */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.1 }}
-            className="rounded-3xl bg-gray-200 overflow-hidden relative aspect-square md:aspect-auto md:min-h-[260px] group"
+            className="rounded-3xl p-8 flex flex-col transition-all group relative overflow-hidden bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-md md:min-h-[260px]"
           >
-            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80" alt="Video thumbnail" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute top-4 left-4 flex items-center gap-3 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold text-gray-800 shadow-sm">
-              <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> 12M+</span>
-              <span className="flex items-center gap-1 text-pink-500"><Heart className="w-3.5 h-3.5" fill="currentColor" /> 98K+</span>
+            <div className="z-10 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">10M+</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Followers Grown</p>
+              </div>
+              <p className="text-xs text-gray-500 mt-8 font-medium">Growing communities with smart social strategies.</p>
             </div>
           </motion.div>
 
-          {/* Tile 3: Stat (Grey) */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-50px" }}
             transition={{ delay: 0.2 }}
-            className="rounded-3xl p-8 flex flex-col justify-between bg-gray-100 border border-gray-200 aspect-square md:aspect-auto md:min-h-[260px]"
+            className="rounded-3xl p-8 flex flex-col transition-all group relative overflow-hidden bg-gray-50 border border-gray-200 hover:border-gray-300 hover:shadow-md md:min-h-[260px]"
           >
-            <div>
-              <h3 className="text-5xl font-bold text-gray-900 mb-2">10M+</h3>
-              <p className="text-gray-700 font-medium text-lg">Followers Grown</p>
-            </div>
-            <p className="text-sm text-gray-500 mt-8">Growing communities with smart social strategies.</p>
-          </motion.div>
-
-          {/* Tile 4: Video Placeholder */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="rounded-3xl bg-gray-200 overflow-hidden relative aspect-square md:aspect-auto md:min-h-[260px] group"
-          >
-            <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Video thumbnail" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute top-4 left-4 flex items-center gap-3 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold text-gray-800 shadow-sm">
-              <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> 2M+</span>
-              <span className="flex items-center gap-1 text-pink-500"><Heart className="w-3.5 h-3.5" fill="currentColor" /> 17K+</span>
-            </div>
-          </motion.div>
-
-          {/* Tile 5: Stat (Grey) */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="rounded-3xl p-8 flex flex-col justify-between bg-gray-100 border border-gray-200 aspect-square md:aspect-auto md:min-h-[260px]"
-          >
-            <div>
-              <h3 className="text-5xl font-bold text-gray-900 mb-2">5+ Years</h3>
-              <p className="text-gray-700 font-medium text-lg">Social Media Expertise</p>
-            </div>
-            <p className="text-sm text-gray-500 mt-8">Years of creating impactful digital experiences.</p>
-          </motion.div>
-
-          {/* Tile 6: Video Placeholder */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="rounded-3xl bg-gray-200 overflow-hidden relative aspect-square md:aspect-auto md:min-h-[260px] group"
-          >
-            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=800&q=80" alt="Video thumbnail" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            <div className="absolute top-4 left-4 flex items-center gap-3 px-3 py-1.5 bg-white/90 backdrop-blur-md rounded-full text-xs font-semibold text-gray-800 shadow-sm">
-              <span className="flex items-center gap-1"><Eye className="w-3.5 h-3.5" /> 9M+</span>
-              <span className="flex items-center gap-1 text-pink-500"><Heart className="w-3.5 h-3.5" fill="currentColor" /> 105K+</span>
+            <div className="z-10 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">5+ Years</h3>
+                <p className="text-gray-600 text-sm leading-relaxed">Social Media Expertise</p>
+              </div>
+              <p className="text-xs text-gray-500 mt-8 font-medium">Years of creating impactful digital experiences.</p>
             </div>
           </motion.div>
 
