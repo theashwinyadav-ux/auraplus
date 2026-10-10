@@ -91,10 +91,21 @@ function DeckViewer({ deck }: { deck: typeof pitchDecks[0] }) {
         }`}
       >
         {/* Seamless Slider using Images */}
-        <div className="w-full h-full relative overflow-hidden">
+        <div className="w-full h-full relative overflow-hidden touch-pan-y">
           <motion.div 
-            className="flex h-full w-full"
+            className="flex h-full w-full cursor-grab active:cursor-grabbing"
             initial={false}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.1}
+            onDragEnd={(e, { offset }) => {
+              const swipe = offset.x;
+              if (swipe < -50 && currentIndex < deck.pages.length - 1) {
+                setCurrentIndex(prev => prev + 1);
+              } else if (swipe > 50 && currentIndex > 0) {
+                setCurrentIndex(prev => prev - 1);
+              }
+            }}
             animate={{ x: `-${currentIndex * 100}%` }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
           >
@@ -111,15 +122,15 @@ function DeckViewer({ deck }: { deck: typeof pitchDecks[0] }) {
         </div>
 
         {/* Controls */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black/70 backdrop-blur-md px-6 py-3 rounded-full text-white z-20 shadow-2xl border border-white/10">
-          <button type="button" onClick={prev} className="hover:text-[#f06a23] transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === 0}>
-            <ChevronLeft className="w-6 h-6" />
+        <div className="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-4 sm:gap-6 bg-black/70 backdrop-blur-md px-4 sm:px-6 py-2 sm:py-3 rounded-full text-white z-20 shadow-2xl border border-white/10 scale-90 sm:scale-100">
+          <button type="button" onClick={prev} className="hover:text-[#f06a23] p-1 transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === 0}>
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
-          <span className="font-semibold text-sm tracking-widest uppercase opacity-90">
+          <span className="font-semibold text-xs sm:text-sm tracking-widest uppercase opacity-90 whitespace-nowrap">
             {currentIndex + 1} / {deck.pages.length}
           </span>
-          <button type="button" onClick={next} className="hover:text-[#f06a23] transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === deck.pages.length - 1}>
-            <ChevronRight className="w-6 h-6" />
+          <button type="button" onClick={next} className="hover:text-[#f06a23] p-1 transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === deck.pages.length - 1}>
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
           </button>
         </div>
         

@@ -30,9 +30,9 @@ export default function Hero() {
             <Link href="/#work" className="w-full sm:w-auto px-8 py-4 bg-white text-[#f06a23] font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-lg hover:shadow-xl block">
               View Our Work
             </Link>
-            <button className="w-full sm:w-auto px-8 py-4 bg-white/20 border border-white/20 backdrop-blur-md text-white font-semibold rounded-lg hover:bg-white/30 transition-all">
+            <Link href="/#services" className="w-full sm:w-auto px-8 py-4 bg-white/20 border border-white/20 backdrop-blur-md text-white font-semibold rounded-lg hover:bg-white/30 transition-all block">
               Our Services
-            </button>
+            </Link>
           </div>
         </motion.div>
       </div>
