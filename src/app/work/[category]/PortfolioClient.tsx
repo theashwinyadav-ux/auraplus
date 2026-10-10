@@ -13,16 +13,19 @@ const pitchDecks = [
     id: 1,
     title: "Google Business Profile Service",
     pdfUrl: "",
-    pages: [
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 1.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 2.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 3.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 4.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 5.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 6.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 7.jpg",
-      "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 8.jpg",
-    ]
+    pages: Array.from({ length: 8 }, (_, i) => `/images/pitch-decks/Google Business Profile Pitch Deck/Artboard ${i + 1}.jpg`)
+  },
+  {
+    id: 2,
+    title: "Company Brochure",
+    pdfUrl: "",
+    pages: Array.from({ length: 24 }, (_, i) => `/images/pitch-decks/Company Brochure/Artboard ${i + 1}.jpg`)
+  },
+  {
+    id: 3,
+    title: "Clipping Service Deck",
+    pdfUrl: "",
+    pages: Array.from({ length: 11 }, (_, i) => `/images/pitch-decks/Clipping Service Deck/Artboard ${i + 1}.jpg`)
   }
 ];
 
