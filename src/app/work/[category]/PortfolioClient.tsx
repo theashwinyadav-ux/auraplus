@@ -6,8 +6,7 @@ import Link from "next/link";
 import { ArrowLeft, Sparkles, Maximize, Minimize, ChevronLeft, ChevronRight } from "lucide-react";
 
 // Mock data for 3 Pitch Decks using our available images as "PDF slides"
-import dynamic from 'next/dynamic';
-const PdfDeckViewer = dynamic(() => import('./PdfDeckViewer'), { ssr: false });
+import PdfDeckViewer from "./PdfDeckViewer";
 
 const pitchDecks = [
   {
