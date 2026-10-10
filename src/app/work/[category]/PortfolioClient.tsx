@@ -23,28 +23,6 @@ const pitchDecks = [
       "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 7.jpg",
       "/images/pitch-decks/Google Business Profile Pitch Deck/Artboard 8.jpg",
     ]
-  },
-  {
-    id: 2,
-    title: "SaaS Series A Deck",
-    pdfUrl: "",
-    pages: [
-      "/images/thumbnails/thumb4.jpg",
-      "/images/thumbnails/thumb5.png",
-      "/images/thumbnails/thumb1.jpg",
-      "/images/thumbnails/thumb2.jpg",
-    ]
-  },
-  {
-    id: 3,
-    title: "E-Commerce Brand Deck",
-    pdfUrl: "",
-    pages: [
-      "/images/thumbnails/thumb2.jpg",
-      "/images/thumbnails/thumb1.jpg",
-      "/images/thumbnails/thumb5.png",
-      "/images/thumbnails/thumb4.jpg",
-    ]
   }
 ];
 
