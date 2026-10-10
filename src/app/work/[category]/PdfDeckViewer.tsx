@@ -66,6 +66,7 @@ export default function PdfDeckViewer({
       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6">
         <h3 className="text-3xl font-bold text-gray-900">{deck.title}</h3>
         <button 
+          type="button"
           onClick={toggleFullscreen} 
           className="flex items-center justify-center gap-2 px-5 py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-full font-semibold transition-colors text-sm w-full sm:w-auto"
         >
@@ -92,40 +93,41 @@ export default function PdfDeckViewer({
           className="flex items-center justify-center w-full h-full"
         >
           {numPages > 0 && (
-            <AnimatePresence>
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none"
+            <div className="w-full h-full relative overflow-hidden">
+              <motion.div 
+                className="flex h-full w-full"
+                initial={false}
+                animate={{ x: `-${currentIndex * 100}%` }}
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
-                {/* The actual PDF Page converted to Canvas */}
-                <div className="shadow-2xl bg-white overflow-hidden" style={{ maxHeight: "100%", maxWidth: "100%" }}>
-                  <Page 
-                    pageNumber={currentIndex + 1} 
-                    width={isFullscreen ? containerWidth * 0.9 : containerWidth} 
-                    renderTextLayer={false}
-                    renderAnnotationLayer={false}
-                    className="flex items-center justify-center object-contain"
-                  />
-                </div>
+                {Array.from(new Array(numPages), (el, index) => (
+                  <div key={index} className="min-w-full flex-shrink-0 h-full flex items-center justify-center p-4">
+                    <div className="shadow-2xl bg-white overflow-hidden flex items-center justify-center pointer-events-none" style={{ maxHeight: "100%", maxWidth: "100%" }}>
+                      <Page 
+                        pageNumber={index + 1} 
+                        width={isFullscreen ? containerWidth * 0.9 : containerWidth * 0.95} 
+                        renderTextLayer={false}
+                        renderAnnotationLayer={false}
+                        className="flex items-center justify-center object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
               </motion.div>
-            </AnimatePresence>
+            </div>
           )}
         </Document>
 
         {/* Controls */}
         {numPages > 0 && (
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-black/70 backdrop-blur-md px-6 py-3 rounded-full text-white z-20 shadow-2xl border border-white/10">
-            <button onClick={prev} className="hover:text-[#f06a23] transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === 0}>
+            <button type="button" onClick={prev} className="hover:text-[#f06a23] transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === 0}>
               <ChevronLeft className="w-6 h-6" />
             </button>
             <span className="font-semibold text-sm tracking-widest uppercase opacity-90">
               {currentIndex + 1} / {numPages}
             </span>
-            <button onClick={next} className="hover:text-[#f06a23] transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === numPages - 1}>
+            <button type="button" onClick={next} className="hover:text-[#f06a23] transition-colors disabled:opacity-30 disabled:hover:text-white" disabled={currentIndex === numPages - 1}>
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
