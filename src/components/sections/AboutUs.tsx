@@ -1,7 +1,55 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Eye, Heart } from "lucide-react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+
+function Counter({ 
+  from = 0, 
+  to, 
+  duration = 2, 
+  suffix = "" 
+}: { 
+  from?: number; 
+  to: number; 
+  duration?: number; 
+  suffix?: string; 
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [count, setCount] = useState(from);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number | null = null;
+    let animationFrame: number;
+
+    // Smooth easeOutExpo for high-end feel
+    const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
+      const current = Math.floor(from + (to - from) * easeOutExpo(progress));
+      setCount(current);
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(step);
+      } else {
+        setCount(to);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationFrame);
+  }, [isInView, from, to, duration]);
+
+  return (
+    <span ref={ref}>
+      {count}{suffix}
+    </span>
+  );
+}
 
 export default function AboutUs() {
   return (
@@ -29,7 +77,9 @@ export default function AboutUs() {
           >
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight">500M+</h3>
+                <h3 className="text-5xl font-bold text-white mb-2 tracking-tight">
+                  <Counter to={500} suffix="M+" duration={2.2} />
+                </h3>
                 <p className="text-white/90 text-sm leading-relaxed">Content Views Generated</p>
               </div>
               
@@ -52,7 +102,9 @@ export default function AboutUs() {
           >
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">10M+</h3>
+                <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">
+                  <Counter to={10} suffix="M+" duration={1.8} />
+                </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">Followers Grown</p>
               </div>
               <p className="text-xs text-gray-500 mt-8 font-medium">Growing communities with smart social strategies.</p>
@@ -68,7 +120,9 @@ export default function AboutUs() {
           >
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
-                <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">5+ Years</h3>
+                <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">
+                  <Counter to={5} suffix="+" duration={1.5} /> Years
+                </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">Social Media Expertise</p>
               </div>
               <p className="text-xs text-gray-500 mt-8 font-medium">Years of creating impactful digital experiences.</p>
