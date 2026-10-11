@@ -53,11 +53,18 @@ export default function Header() {
 
         {/* Desktop Action & Mobile Hamburger */}
         <div className="flex items-center gap-4">
-          <a href="#book" className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors shadow-sm ${
-            isScrolled 
-              ? "bg-gray-900 text-white hover:bg-[#f06a23]" 
-              : "bg-white text-[#f06a23] hover:bg-gray-50"
-          }`}>
+          <a 
+            href="#book" 
+            onClick={(e) => {
+              e.preventDefault();
+              window.dispatchEvent(new Event("open-booking-modal"));
+            }}
+            className={`hidden md:inline-flex items-center justify-center px-6 py-2.5 text-sm font-semibold rounded-lg transition-colors shadow-sm cursor-pointer ${
+              isScrolled 
+                ? "bg-gray-900 text-white hover:bg-[#f06a23]" 
+                : "bg-white text-[#f06a23] hover:bg-gray-50"
+            }`}
+          >
             Book a Call
           </a>
 
@@ -118,8 +125,12 @@ export default function Header() {
               </Link>
               <a 
                 href="#book" 
-                onClick={() => setIsOpen(false)}
-                className="mt-3 w-full flex items-center justify-center py-3.5 bg-[#f06a23] hover:bg-[#d95614] text-white font-semibold rounded-xl transition-all shadow-md active:scale-[0.98]"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(false);
+                  window.dispatchEvent(new Event("open-booking-modal"));
+                }}
+                className="mt-3 w-full flex items-center justify-center py-3.5 bg-[#f06a23] hover:bg-[#d95614] text-white font-semibold rounded-xl transition-all shadow-md active:scale-[0.98] cursor-pointer"
               >
                 Book a Call
               </a>

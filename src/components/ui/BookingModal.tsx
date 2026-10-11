@@ -14,30 +14,41 @@ export default function BookingModal() {
   const [selectedTime, setSelectedTime] = useState("");
   const [formData, setFormData] = useState({ name: "", email: "", company: "" });
 
-  // Listen to URL hash to open/close modal
+  // Listen to open events or URL hash to open/close modal
   useEffect(() => {
+    const handleOpen = () => {
+      setIsOpen(true);
+      setStep(1);
+      // Reset form
+      setSelectedDate("");
+      setSelectedTime("");
+      setFormData({ name: "", email: "", company: "" });
+    };
+
     const handleHashChange = () => {
       if (window.location.hash === "#book") {
-        setIsOpen(true);
-        setStep(1);
-        // Reset form
-        setSelectedDate("");
-        setSelectedTime("");
-        setFormData({ name: "", email: "", company: "" });
-      } else {
-        setIsOpen(false);
+        handleOpen();
       }
     };
 
     // Check on mount
-    handleHashChange();
+    if (window.location.hash === "#book") {
+      handleOpen();
+    }
 
+    window.addEventListener("open-booking-modal", handleOpen);
     window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    return () => {
+      window.removeEventListener("open-booking-modal", handleOpen);
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   const closeModal = () => {
-    window.location.hash = "";
+    if (window.location.hash === "#book") {
+      // Clean hash without causing browser to jump/scroll to top
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
     setIsOpen(false);
   };
 
