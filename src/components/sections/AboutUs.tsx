@@ -69,9 +69,9 @@ export default function AboutUs() {
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-5xl font-bold text-white mb-2 tracking-tight">
-                  <Counter to={500} suffix="M+" duration={2.2} />
+                  <Counter to={20} suffix="M+" duration={2} />
                 </h3>
-                <p className="text-white/90 text-sm leading-relaxed">Content Views Generated</p>
+                <p className="text-white/90 text-sm leading-relaxed">Views Generated</p>
               </div>
               
               <div className="flex flex-wrap gap-2 z-10 mt-8">
@@ -94,11 +94,11 @@ export default function AboutUs() {
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">
-                  <Counter to={10} suffix="M+" duration={1.8} />
+                  <Counter to={600} suffix="+" duration={2.2} />
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Followers Grown</p>
+                <p className="text-gray-600 text-sm leading-relaxed">Designs Created</p>
               </div>
-              <p className="text-xs text-gray-500 mt-8 font-medium">Growing communities with smart social strategies.</p>
+              <p className="text-xs text-gray-500 mt-8 font-medium">Crafting high-impact visuals that captivate audiences.</p>
             </div>
           </motion.div>
 
@@ -112,11 +112,11 @@ export default function AboutUs() {
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">
-                  <Counter to={5} suffix="+" duration={1.5} /> Years
+                  <Counter to={50} suffix="+" duration={2} />
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">Social Media Expertise</p>
+                <p className="text-gray-600 text-sm leading-relaxed">Satisfied Clients</p>
               </div>
-              <p className="text-xs text-gray-500 mt-8 font-medium">Years of creating impactful digital experiences.</p>
+              <p className="text-xs text-gray-500 mt-8 font-medium">Building lasting partnerships with ambitious brands.</p>
             </div>
           </motion.div>
 
