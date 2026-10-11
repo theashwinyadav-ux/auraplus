@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useInView, animate } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 function Counter({ 
   from = 0, 
   to, 
-  duration = 2, 
+  duration = 2.2, 
   suffix = "" 
 }: { 
   from?: number; 
@@ -15,38 +15,29 @@ function Counter({
   suffix?: string; 
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  const [count, setCount] = useState(from);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
 
   useEffect(() => {
     if (!isInView) return;
 
-    let startTime: number | null = null;
-    let animationFrame: number;
+    const node = ref.current;
+    if (!node) return;
 
-    // Smooth easeOutExpo for high-end feel
-    const easeOutExpo = (t: number) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+    // Premium cubic ease-out curve for buttery deceleration
+    const controls = animate(from, to, {
+      duration,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate(value) {
+        node.textContent = `${Math.round(value)}${suffix}`;
+      },
+    });
 
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp;
-      const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-      const current = Math.floor(from + (to - from) * easeOutExpo(progress));
-      setCount(current);
-
-      if (progress < 1) {
-        animationFrame = requestAnimationFrame(step);
-      } else {
-        setCount(to);
-      }
-    };
-
-    animationFrame = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationFrame);
-  }, [isInView, from, to, duration]);
+    return () => controls.stop();
+  }, [isInView, from, to, duration, suffix]);
 
   return (
     <span ref={ref}>
-      {count}{suffix}
+      {from}{suffix}
     </span>
   );
 }
