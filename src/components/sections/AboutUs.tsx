@@ -1,50 +1,48 @@
 "use client";
 
 import { motion, useInView, animate } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function Counter({ 
-  from = 0, 
   to, 
-  duration = 2.2, 
-  suffix = "" 
+  duration = 2, 
+  suffix = "",
+  start = false
 }: { 
-  from?: number; 
   to: number; 
   duration?: number; 
   suffix?: string; 
+  start?: boolean;
 }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
-    if (!isInView) return;
+    if (!start) return;
 
-    const node = ref.current;
-    if (!node) return;
-
-    // Premium cubic ease-out curve for buttery deceleration
-    const controls = animate(from, to, {
+    const controls = animate(0, to, {
       duration,
       ease: [0.16, 1, 0.3, 1],
       onUpdate(value) {
-        node.textContent = `${Math.round(value)}${suffix}`;
+        setCount(Math.round(value));
       },
     });
 
     return () => controls.stop();
-  }, [isInView, from, to, duration, suffix]);
+  }, [start, to, duration]);
 
   return (
-    <span ref={ref}>
-      {from}{suffix}
+    <span>
+      {count}{suffix}
     </span>
   );
 }
 
 export default function AboutUs() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
+
   return (
-    <section id="about" className="py-24 px-6 bg-white border-b border-gray-200">
+    <section ref={sectionRef} id="about" className="py-24 px-6 bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto">
         
         {/* Header Section */}
@@ -60,6 +58,7 @@ export default function AboutUs() {
         {/* 3x1 Grid Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           
+          {/* Card 1: 20M+ Views Generated */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +68,7 @@ export default function AboutUs() {
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-5xl font-bold text-white mb-2 tracking-tight">
-                  <Counter to={20} suffix="M+" duration={2} />
+                  <Counter to={20} suffix="M+" duration={2} start={isInView} />
                 </h3>
                 <p className="text-white/90 text-sm leading-relaxed">Views Generated</p>
               </div>
@@ -84,6 +83,7 @@ export default function AboutUs() {
             </div>
           </motion.div>
 
+          {/* Card 2: 600+ Designs Created */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -94,7 +94,7 @@ export default function AboutUs() {
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">
-                  <Counter to={600} suffix="+" duration={2.2} />
+                  <Counter to={600} suffix="+" duration={2.2} start={isInView} />
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">Designs Created</p>
               </div>
@@ -102,6 +102,7 @@ export default function AboutUs() {
             </div>
           </motion.div>
 
+          {/* Card 3: 50+ Satisfied Clients */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -112,7 +113,7 @@ export default function AboutUs() {
             <div className="z-10 flex-1 flex flex-col justify-between">
               <div>
                 <h3 className="text-5xl font-bold text-gray-900 mb-2 tracking-tight">
-                  <Counter to={50} suffix="+" duration={2} />
+                  <Counter to={50} suffix="+" duration={2} start={isInView} />
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">Satisfied Clients</p>
               </div>
